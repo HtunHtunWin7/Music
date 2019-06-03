@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">LoginSample</string>
+    <string name="facebook_app_id">329186611331654</string>
+    <string name="fb_login_protocol_scheme">fb329186611331654</string>
+
+    <string name="logo_name">AgriGrapher</string>
+    <string name="logo_note">Catch the Agriculture</string>
+    <string name="ph_hnint">Enter Phone Number</string>
+    <string name="password_hnint">Enter Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="register">Register</string>
+</resources>
