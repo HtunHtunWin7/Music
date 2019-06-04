@@ -12,6 +12,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.common.SignInButton;
 
 import java.util.Arrays;
 
@@ -21,7 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String AUTH_TYPE = "rerequest";
 
     private CallbackManager mCallbackManager;
-    private TextView txt_logo,txt_note,txt_forgot_password,txt_register;
+    private TextView txt_logo,txt_note,txt_forgot_password,txt_register,txt_or;
     private EditText editText_password;
     AutoCompleteTextView autoCompleteTextView_phno;
 
@@ -40,19 +41,25 @@ public class LoginActivity extends AppCompatActivity {
         txt_note=findViewById(R.id.txt_note);
         txt_forgot_password=findViewById(R.id.txt_forgot_password);
         txt_register=findViewById(R.id.txt_register);
+        txt_or=findViewById(R.id.txt_or);
         autoCompleteTextView_phno=findViewById(R.id.txt_ph);
         editText_password=findViewById(R.id.txt_password);
         mCallbackManager = CallbackManager.Factory.create();
 
-        LoginButton mLoginButton = findViewById(R.id.login_button);
+        SignInButton g_sign_in_button=findViewById(R.id.g_sign_in_button);
+        LoginButton f_login_button = findViewById(R.id.f_login_button);
+
+        g_sign_in_button.setSize(SignInButton.SIZE_STANDARD);
+        TextView textView= (TextView) g_sign_in_button.getChildAt(0);
+        textView.setText("Sign in with Google");
 
         // Set the initial permissions to request from the user while logging in
-        mLoginButton.setReadPermissions(Arrays.asList(EMAIL, USER_POSTS));
+        f_login_button.setReadPermissions(Arrays.asList(EMAIL, USER_POSTS));
 
-        mLoginButton.setAuthType(AUTH_TYPE);
+        f_login_button.setAuthType(AUTH_TYPE);
 
         // Register a callback to respond to the user
-        mLoginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+        f_login_button.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 setResult(RESULT_OK);
